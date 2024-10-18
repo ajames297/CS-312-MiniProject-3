@@ -1,4 +1,4 @@
-import express from "express"; // lines 1 -30 are from 8.2 Postgres Read 
+import express from "express"; 
 import bodyParser from "body-parser";
 import pg from "pg";
 
@@ -28,7 +28,7 @@ let blogPosts = [];
     db.end();
   });
 
-// Route to render the main page (lines 32 - 41 are from 6.1 Blog API Project, server.js file)
+// Route to render the main page
 app.get("/", async (req, res) => {
       res.render("index.ejs", { blogPosts });
 });
@@ -43,7 +43,6 @@ app.post("/new", (req, res) => {
     const body = req.body["body"];
     const creator_name = req.body["creator_name"];
     const date_created = new Date();
-    // from INSERT and ADD DATA - Travel Tracker Part 2 15:00
     const db = new pg.Client({
       user: "postgres",
       host: "localhost",
